@@ -5,63 +5,54 @@ import InputField from "./components/InputField";
 import { randomName, randomColor } from "./components/UserIdentity";
 
 //Scaledrone Channel and Room information
-const serverId = "dLWDUvT6xoHpgJUm";
-const roomId = "Observable-chatapp";
+const serverId = "GmnKeKjQ4syikZsb";
+const roomId = "observable-chatapp";
+
+//member setup
+const member = {
+  username: randomName(),
+  color: randomColor(),
+}
+
+//Connecting to the server & chat room
+const drone = new window.Scaledrone(serverId, { data: member });
+const room = drone.subscribe(roomId);
+
 
 export default function App() {
-  const initialState = {
-    member: {
-      username: randomName(),
-      color: randomColor(),
-    },
-    messages: [],
-  };
 
-  const [chat, setChat] = useState(initialState);
-  const [drone, setDrone] = useState();
-  const [initialMemberId, setInitialMemberId] = useState();
+  const [memberId, setMemberId] = useState([]);
+  const [chat, setChat] = useState([]);
 
-  //Connecting to the server
-  useEffect(() => {
-    const drone = new window.Scaledrone(serverId, { data: chat.member });
-    setDrone(drone);
-  }, [chat.member]);
-
+  // pročitaj i prokuži ovo: https://reactjs.org/docs/hooks-reference.html#functional-updates
+  // moguće da se može ovdje primjeniti
 
   useEffect(() => {
+
     //Assigning an unique id to a chat member upon opening the app
-    const droneEvents = () => {
-      drone.on("open", (error) => {
-        if (error) {
-          return console.error(error);
-        }
-        chat.member.id = drone.clientId;
-        if (initialMemberId === null) setInitialMemberId(drone.clientId);
-        setChat({ ...chat }, chat.member);
-        roomEvents();
-      });
-
-      const roomEvents = () => {
-        //Connecting to the chat room
-        const room = drone.subscribe(roomId);
-
-        //Recieving messages from the server
-        room.on("message", (message) => {
-          receiveMsg(message);
-          const receiveMsg = (message) => {
-            chat.messages.push(message);
-            setChat({ ...chat }, chat.messages);
-          }
-        });
-      };
-
-      if (drone && !chat.member.id) {
-        droneEvents();
+    drone.on("open", (error) => {
+      if (error) {
+        return console.error(error);
       }
-    }
-  }, [chat, drone, initialMemberId]);
+      let newMember = memberId;
+      newMember.id = drone.clientId;
+      setMemberId(newMember);
+    });
 
-  //sending messages to scaledrone
+    //Recieving messages from the server
+    room.on("message", (message) => {
+      const { data, id, member, timestamp } = message;
+      let copyChat = chat;
+      copyChat.push({ member: member, text: data, id: id, time: timestamp });
+      let newMessages = [...copyChat];
+      setChat(newMessages);
+      console.log(chat);
+    });
+
+  }, []);
+
+
+  //Sending messages to scaledrone
   const sendMessage = (message) => {
     drone.publish({
       room: roomId,
@@ -74,9 +65,8 @@ export default function App() {
     <div className="App">
       <h1>Hello Algebra chat</h1>
       <MessageList
-        messages={chat.messages}
-        currentMember={chat.member}
-        initialMemberId={initialMemberId}
+        chat={chat}
+        myId={memberId}
       />
       <InputField submitMessage={sendMessage} />
     </div>

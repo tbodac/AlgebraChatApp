@@ -18,7 +18,7 @@ export default function InputField({ submitMessage }) {
         if (trimMessage) {
             submitMessage(trimMessage);
             setMessage("");
-            console.log("test poslano")
+            console.log("test-poslano")
         }
     }
 

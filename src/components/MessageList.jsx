@@ -4,11 +4,19 @@ import MessageItem from "./MessageItem";
 
 export default class MessageList extends React.Component {
     render() {
-        const { messages, currentMember, initialMemberId } = this.props;
+        const { chat, myId } = this.props;
 
         return (
             <div>
-                {messages.map(m => <MessageItem key={initialMemberId.id} messages={m} currentMember={currentMember} />)}
+                {chat.map(chat =>
+                    <MessageItem
+                        key={chat.id}
+                        chatId={chat.id}
+                        chatData={chat.data}
+                        currentMember={chat.member}
+                        time={chat.time}
+                        myId={myId}
+                    />)}
             </div>
         )
     }
@@ -17,4 +25,5 @@ export default class MessageList extends React.Component {
 // MessageList.propTypes = {
 //     messages: PropTypes.array.isRequired,
 //     currentMember: PropTypes.object.isRequired,
+//     myId: PropTypes.object.isRequired
 // };
