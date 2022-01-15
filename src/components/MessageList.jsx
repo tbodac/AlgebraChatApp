@@ -1,7 +1,5 @@
 import React from "react";
 import MessageItem from "./MessageItem";
-// import PropTypes from 'prop-types';
-
 export default class MessageList extends React.Component {
     render() {
         const { chat, myId } = this.props;
@@ -12,7 +10,7 @@ export default class MessageList extends React.Component {
                     <MessageItem
                         key={chat.id}
                         chatId={chat.id}
-                        chatData={chat.data}
+                        chatText={chat.text}
                         currentMember={chat.member}
                         time={chat.time}
                         myId={myId}
@@ -22,8 +20,4 @@ export default class MessageList extends React.Component {
     }
 }
 
-// MessageList.propTypes = {
-//     messages: PropTypes.array.isRequired,
-//     currentMember: PropTypes.object.isRequired,
-//     myId: PropTypes.object.isRequired
-// };
+//TODO proptypes

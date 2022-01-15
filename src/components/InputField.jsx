@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import PropTypes from "prop-types";
 
 export default function InputField({ submitMessage }) {
     const [message, setMessage] = useState("");
@@ -31,6 +30,4 @@ export default function InputField({ submitMessage }) {
     );
 }
 
-// InputField.propTypes = {
-//     submitMessage: PropTypes.func.isRequired
-// }
+//TODO proptypes

@@ -24,8 +24,8 @@ export default function App() {
   const [memberId, setMemberId] = useState([]);
   const [chat, setChat] = useState([]);
 
-  // pročitaj i prokuži ovo: https://reactjs.org/docs/hooks-reference.html#functional-updates
-  // moguće da se može ovdje primjeniti
+  // TODO pročitaj i prokuži ovo: https://reactjs.org/docs/hooks-reference.html#functional-updates
+  // Moguće da se može ovdje primjeniti
 
   useEffect(() => {
 
@@ -38,6 +38,8 @@ export default function App() {
       newMember.id = drone.clientId;
       setMemberId(newMember);
     });
+
+    //TODO Šalješ cijeli chat array, bilo bi bolje da šalješ samo posljednji
 
     //Recieving messages from the server
     room.on("message", (message) => {
@@ -52,7 +54,7 @@ export default function App() {
   }, []);
 
 
-  //Sending messages to scaledrone
+  //Sending messages to Scaledrone server
   const sendMessage = (message) => {
     drone.publish({
       room: roomId,
