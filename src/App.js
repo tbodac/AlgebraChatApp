@@ -5,8 +5,8 @@ import InputField from "./components/InputField";
 import { randomName, randomColor } from "./components/UserIdentity";
 
 //Scaledrone Channel and Room information
-const serverId = "GmnKeKjQ4syikZsb";
-const roomId = "observable-chatapp";
+const serverId = "bqeA6KBIWxX3kOXQ";
+const roomId = "observable-algebraZavršniRadChatApp";
 
 //member setup
 const member = {
@@ -60,12 +60,14 @@ export default function App() {
       room: roomId,
       message
     });
-    console.log("test-primljeno")
   };
 
   return (
     <div className="App">
-      <h1>Hello Algebra chat</h1>
+      <div className="App-header">
+        <h1>Hello Algebra chat</h1>
+      </div>>
+
       <MessageList
         chat={chat}
         myId={memberId}

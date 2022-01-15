@@ -17,16 +17,16 @@ export default function InputField({ submitMessage }) {
         if (trimMessage) {
             submitMessage(trimMessage);
             setMessage("");
-            console.log("test-poslano")
         }
     }
 
     return (
-        // <form onSubmit={(e) => handleSubmit(e)}>
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Say something" value={message} onChange={handleChange} autoFocus={true} />
-            <input type="submit" value="Send" />
-        </form>
+        <div className="Input">
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Say something" value={message} onChange={handleChange} autoFocus={true} />
+                <input type="submit" value="Send" className="button" />
+            </form>
+        </div>
     );
 }
 
