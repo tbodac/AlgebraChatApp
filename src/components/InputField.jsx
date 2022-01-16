@@ -21,10 +21,10 @@ export default function InputField({ submitMessage }) {
     }
 
     return (
-        <div className="Input">
+        <div className="input">
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Say something" value={message} onChange={handleChange} autoFocus={true} />
-                <input type="submit" value="Send" className="button" />
+                <input className="input-text" type="text" placeholder="Say something..." value={message} onChange={handleChange} autoFocus={true} />
+                <input className="input-submit" type="submit" value="Send" />
             </form>
         </div>
     );

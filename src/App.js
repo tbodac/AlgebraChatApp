@@ -63,10 +63,10 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <div className="App-header">
-        <h1>Hello Algebra chat</h1>
-      </div>>
+    <div className="app">
+      <div className="app-header">
+        <h1>Algebra chat</h1>
+      </div>
 
       <MessageList
         chat={chat}

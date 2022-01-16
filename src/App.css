@@ -1,99 +1,155 @@
-.App {
+/* color variables */
+:root {
+	--color: #ffffff;
+	--currentMember-bg: #cc8534;
+	--otherMember-bg: #41c0a0;
+	--send-bg: #489c87;
+
+	/* light theme */
+	--light-app-bg: #d1d4d1;
+	--light-main-bg: #f3f3f1;
+	--light-accent-bg: #15524f;
+
+	/* dark theme */
+	--dark-app-bg: #0a1d29;
+	--dark-main-bg: #063047;
+	--dark-accent-bg: #0f2a38;
+}
+
+body {
+	max-width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--light-app-bg);
+}
+
+.app {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 100vh;
+	background: var(--light-main-bg);
+	min-width: 60vw;
+	max-width: 60vw;
+	min-height: 90vh;
+	max-height: 90vh;
 }
 
-.App-header {
-	background-color: #262626;
-	overflow: visible;
-	width: 100%;
-	text-align: center;
-	color: white;
-}
-
-.Messages-list {
-	padding: 20px 0;
-	max-width: 900px;
-	width: 100%;
+.chat {
+	display: inline-block;
 	margin: 0 auto;
-	list-style: none;
-	padding-left: 0;
-	flex-grow: 1;
-	overflow: auto;
+	width: 100%;
+	border-radius: 0.5rem;
+	/* background: #ced1d4; */
+	color: var(--color);
 }
 
-.Messages-message {
+.app-header {
+	background-color: var(--light-accent-bg);
+	text-align: center;
+	color: var(--light-main-bg);
+	padding: 1rem;
+	border-bottom: 2px solid var(--light-app-bg);
+	border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.messages-list {
+	flex: 1;
+	align-items: flex-start;
+	padding: 0 0.5rem;
+	overflow-y: auto;
+}
+
+.messages-message {
 	display: flex;
-	margin-top: 10px;
+	margin-top: 1rem;
 }
 
-.Messages-message.currentMember {
-	/*justify-content: flex-end;*/
+.messages-message.currentMember {
 	flex-direction: row-reverse;
 	text-align: right;
 }
 
-.Message-content {
+.message-content {
 	display: inline-block;
+	margin: 0 0.5rem;
 }
 
-.currentMember > .Message-content {
+.currentMember > .message-content {
 	align-items: flex-end;
 }
 
-.Messages-message > .avatar {
-	height: 35px;
-	width: 35px;
+.messages-message > .avatar {
+	height: 2rem;
+	width: 2rem;
 	border-radius: 50%;
 	display: inline-block;
-	margin: 0 10px -10px;
+	margin: 1.2rem 0rem -0.5rem;
 }
 
-.Message-content > .username {
+.message-content > .username {
 	display: block;
-	color: gray;
-	font-size: 14px;
-	padding-bottom: 4px;
+	color: var(--light-accent-bg);
+	font-size: 0.8rem;
+	padding-bottom: 0.2rem;
 }
 
-.Message-content > .text {
-	padding: 10px;
-	max-width: 400px;
+.message-content > .text {
+	padding: 1rem;
+	min-width: 10vw;
+	max-width: 35vw;
 	margin: 0;
-	border-radius: 12px;
-	background-color: cornflowerblue;
-	color: white;
+	border-radius: 1rem;
+	background-color: var(--currentMember-bg);
+	color: var(--color);
 	display: inline-block;
+	border-radius: 0 1rem 1rem 1rem;
 }
 
-.currentMember > .Message-content .text {
-	background-color: orangered;
+.currentMember > .message-content .text {
+	background-color: var(--otherMember-bg);
+	border-radius: 1rem 0 1rem 1rem;
 }
 
 form {
 	display: flex;
-	width: 100%;
+	align-content: center;
 	justify-content: space-between;
-	max-width: 900px;
-	margin: 0 auto 40px;
+	width: 100%;
+	max-width: 90%;
+	margin: 1rem auto 1rem;
 }
 
-input {
-	padding: 5px;
-	font-size: 16px;
-	border-radius: 8px;
-	border: 1px solid orangered;
-	flex-grow: 1;
+.input {
+	font-size: 1rem;
+	padding: 0.5rem;
+	background-color: var(--light-accent-bg);
+	border-top: 2px solid var(--light-app-bg);
+	border-radius: 0 0 0.5rem 0.5rem;
 }
 
-.button {
-	padding: 5px 10px;
-	font-size: 16px;
-	background-color: orangered;
-	color: white;
+.input-text {
+	float: left;
+	height: 2rem;
+	width: 95%;
 	border: none;
-	border-radius: 8px;
-	margin-left: 10px;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	margin: 0 0.5rem 0 0;
+	background-color: var(--light-main-bg);
+	font-size: 1rem;
+}
+
+.input-submit {
+	float: right;
+	position: relative;
+	cursor: pointer;
+	padding: 0.5rem 1rem;
+	margin: 0 0.5rem 0 0;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+	color: var(--color);
+	background-color: var(--send-bg);
+	text-align: center;
 }

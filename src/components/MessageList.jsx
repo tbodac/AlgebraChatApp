@@ -5,17 +5,19 @@ export default class MessageList extends React.Component {
         const { chat, myId } = this.props;
 
         return (
-            <div className={"identifyMember"} >
-                {chat.map(chat =>
-                    <MessageItem
-                        key={chat.id}
-                        chatId={chat.id}
-                        chatText={chat.text}
-                        currentMember={chat.member}
-                        time={chat.time}
-                        myId={myId}
-                    />)}
-            </div>
+            <div className={"identifyMember", "messages-list"} >
+                {
+                    chat.map(chat =>
+                        <MessageItem
+                            key={chat.id}
+                            chatId={chat.id}
+                            chatText={chat.text}
+                            currentMember={chat.member}
+                            time={chat.time}
+                            myId={myId}
+                        />)
+                }
+            </div >
         )
     }
 }
