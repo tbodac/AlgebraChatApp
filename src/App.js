@@ -44,7 +44,6 @@ export default function App() {
       copyChat.push({ member: member, text: data, id: id, time: timestamp });
       let newMessages = [...copyChat];
       setChat(newMessages);
-      // scrollToBottom("allMessages");
     });
 
   }, []);
