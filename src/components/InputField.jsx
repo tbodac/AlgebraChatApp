@@ -30,4 +30,4 @@ export default function InputField({ submitMessage }) {
     );
 }
 
-//TODO proptypes
+//TODO dodaj proptypes

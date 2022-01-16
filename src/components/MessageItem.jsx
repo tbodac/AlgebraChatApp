@@ -23,4 +23,4 @@ export default function MessageItem({ chatId, chatText, currentMember, time, myI
     )
 }
 
-//TODO proptypes
+//TODO dodaj proptypes

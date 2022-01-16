@@ -22,4 +22,4 @@ export default class MessageList extends React.Component {
     }
 }
 
-//TODO proptypes
+//TODO dodaj proptypes

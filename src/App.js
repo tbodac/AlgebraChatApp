@@ -14,6 +14,13 @@ const member = {
   color: randomColor(),
 }
 
+// TODO 
+// auto scroll to bottom
+// Array.pop ili nesto sto ce izvuc zadnji objekt iz chat arraya
+// pročitaj i prokuži ovo: https://reactjs.org/docs/hooks-reference.html#functional-updates
+// moguće da se može ovdje primjeniti
+
+
 //Connecting to the server & chat room
 const drone = new window.Scaledrone(serverId, { data: member });
 const room = drone.subscribe(roomId);
