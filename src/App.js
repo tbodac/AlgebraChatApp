@@ -5,8 +5,8 @@ import InputField from "./components/InputField";
 import { randomName, randomColor } from "./components/UserIdentity";
 
 //Scaledrone Channel and Room information
-const serverId = "bqeA6KBIWxX3kOXQ";
-const roomId = "observable-algebraZavršniRadChatApp";
+const serverId = "nc0YuVnt1cLgFGgo";
+const roomId = "observable-zavrsniRadAlgebraChatApp";
 
 //member setup
 const member = {
@@ -24,8 +24,6 @@ export default function App() {
   const [memberId, setMemberId] = useState([]);
   const [chat, setChat] = useState([]);
 
-  // TODO pročitaj i prokuži ovo: https://reactjs.org/docs/hooks-reference.html#functional-updates
-  // Moguće da se može ovdje primjeniti
 
   useEffect(() => {
 
@@ -39,8 +37,6 @@ export default function App() {
       setMemberId(newMember);
     });
 
-    //TODO Šalješ cijeli chat array, bilo bi bolje da šalješ samo posljednji
-
     //Recieving messages from the server
     room.on("message", (message) => {
       const { data, id, member, timestamp } = message;
@@ -48,7 +44,7 @@ export default function App() {
       copyChat.push({ member: member, text: data, id: id, time: timestamp });
       let newMessages = [...copyChat];
       setChat(newMessages);
-      console.log(chat);
+      // scrollToBottom("allMessages");
     });
 
   }, []);
